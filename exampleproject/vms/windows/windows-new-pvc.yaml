@@ -6,7 +6,7 @@ metadata:
 spec:
   dataVolumeTemplates:
     - metadata:
-        name: windows-2k25-virtio-volume
+        name: windows25
       spec:
         sourceRef:
           kind: DataSource
@@ -57,7 +57,7 @@ spec:
       volumes:
         - dataVolume:
             name: windows-2k25-virtio-volume
-          name: windows-2k25-virtio-cdrom-iso
+          name: windows25
         - cloudInitNoCloud:
             userData: |
               #cloud-config
