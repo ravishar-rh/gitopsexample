@@ -1,0 +1,8 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: VolumeCloneSource
+metadata:
+  name: rhel-9-minimalpvc
+spec:
+  source:
+    kind: PersistentVolumeClaim
+    name: rhel9
