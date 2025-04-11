@@ -1,0 +1,71 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: windows-2k25-virtio
+  namespace: exampleproject
+spec:
+  dataVolumeTemplates:
+    - metadata:
+        name: windows-2k25-virtio-volume
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: windows25
+          namespace: exampleproject
+        storage:
+          resources:
+            requests:
+              storage: '10737418240'
+          storageClassName: ocs-external-storagecluster-ceph-rbd-immediate
+    - metadata:
+        name: windows-2k25-virtio-volume-blank
+      spec:
+        source:
+          blank: {}
+        storage:
+          resources:
+            requests:
+              storage: 60Gi
+          storageClassName: ocs-external-storagecluster-ceph-rbd-immediate
+  instancetype:
+    name: u1.medium
+  preference:
+    name: windows.2k25.virtio
+  running: true
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      domain:
+        devices:
+          autoattachPodInterface: false
+          disks:
+            - bootOrder: 2
+              cdrom:
+                bus: sata
+              name: windows-2k25-virtio-cdrom-iso
+            - bootOrder: 1
+              name: rootdisk
+          interfaces:
+            - masquerade: {}
+              name: default
+      networks:
+        - name: default
+          pod: {}
+      subdomain: headless
+      volumes:
+        - dataVolume:
+            name: windows-2k25-virtio-volume
+          name: windows-2k25-virtio-cdrom-iso
+        - cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              chpasswd:
+                expire: false
+              password: n1nx-qfxr-0io4
+              user: windows
+          name: cloudinitdisk
+        - dataVolume:
+            name: windows-2k25-virtio-volume-blank
+          name: rootdisk
