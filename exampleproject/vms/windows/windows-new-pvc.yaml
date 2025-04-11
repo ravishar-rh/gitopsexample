@@ -41,11 +41,11 @@ spec:
         devices:
           autoattachPodInterface: false
           disks:
-            - bootOrder: 2
+            - bootOrder: 1
               cdrom:
                 bus: sata
               name: windows-2k25-virtio-cdrom-iso
-            - bootOrder: 1
+            - bootOrder: 2
               name: rootdisk
           interfaces:
             - masquerade: {}
