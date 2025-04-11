@@ -1,15 +1,21 @@
-project: default
-source:
-  repoURL: 'https://github.com/ravishar-rh/gitopsexample.git'
-  path: exampleproject/vms/windows
-  targetRevision: HEAD
-  directory:
-    recurse: true
-    jsonnet: {}
-destination:
-  server: 'https://kubernetes.default.svc'
-  namespace: exampleproject
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: singpleapplication
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: exampleproject
+    server: https://kubernetes.default.svc  
+  project: default
+  source:
+    repoURL: 'https://github.com/ravishar-rh/gitopsexample.git'
+    path: exampleproject/vms/windows
+    targetRevision: HEAD
+    directory:
+      recurse: true
+      jsonnet: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
