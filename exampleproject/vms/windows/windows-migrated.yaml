@@ -50,11 +50,6 @@ spec:
             - bus: usb
               name: tablet
               type: tablet
-          interfaces:
-            - macAddress: '02:76:c3:00:00:05'
-              masquerade: {}
-              model: e1000e
-              name: default
         features:
           acpi: {}
           apic: {}
