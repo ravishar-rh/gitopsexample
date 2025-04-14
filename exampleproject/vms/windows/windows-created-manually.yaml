@@ -1,6 +1,15 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  finalizers:
+    - kubevirt.io/virtualMachineControllerFinalize
+  labels:
+    app: win2k22-apricot-basilisk-61
+    vm.kubevirt.io/template: windows2k22-server-medium
+    vm.kubevirt.io/template.namespace: openshift    
   name: win2k22-apricot-basilisk-61
     - apiVersion: kubevirt.io/v1
       fieldsType: FieldsV1
@@ -138,8 +147,6 @@ metadata:
       subresource: status
       time: '2025-04-14T11:44:39Z'
   namespace: exampleproject
-  finalizers:
-    - kubevirt.io/virtualMachineControllerFinalize
 spec:
   dataVolumeTemplates:
     - apiVersion: cdi.kubevirt.io/v1beta1
