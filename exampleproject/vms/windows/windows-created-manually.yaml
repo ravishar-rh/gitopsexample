@@ -1,46 +1,7 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
-  annotations:
-    kubevirt.io/latest-observed-api-version: v1
-    kubevirt.io/storage-observed-api-version: v1
-    vm.kubevirt.io/validations: |
-      [
-        {
-          "name": "minimal-required-memory",
-          "path": "jsonpath::.spec.domain.memory.guest",
-          "rule": "integer",
-          "message": "This VM requires more memory.",
-          "min": 536870912
-        }, {
-          "name": "windows-virtio-bus",
-          "path": "jsonpath::.spec.domain.devices.disks[*].disk.bus",
-          "valid": "jsonpath::.spec.domain.devices.disks[*].disk.bus",
-          "rule": "enum",
-          "message": "virtio disk bus type has better performance, install virtio drivers in VM and change bus type",
-          "values": ["virtio"],
-          "justWarning": true
-        }, {
-          "name": "windows-disk-bus",
-          "path": "jsonpath::.spec.domain.devices.disks[*].disk.bus",
-          "valid": "jsonpath::.spec.domain.devices.disks[*].disk.bus",
-          "rule": "enum",
-          "message": "disk bus has to be either virtio or sata or scsi",
-          "values": ["virtio", "sata", "scsi"]
-        }, {
-          "name": "windows-cd-bus",
-          "path": "jsonpath::.spec.domain.devices.disks[*].cdrom.bus",
-          "valid": "jsonpath::.spec.domain.devices.disks[*].cdrom.bus",
-          "rule": "enum",
-          "message": "cd bus has to be sata",
-          "values": ["sata"]
-        }
-      ]
-  resourceVersion: '18792037'
   name: win2k22-apricot-basilisk-61
-  uid: 1ba1ef9a-b3d8-4d42-b4d3-5da2dd015d70
-  creationTimestamp: '2025-04-11T22:14:52Z'
-  generation: 1
     - apiVersion: kubevirt.io/v1
       fieldsType: FieldsV1
       fieldsV1:
@@ -179,12 +140,6 @@ metadata:
   namespace: exampleproject
   finalizers:
     - kubevirt.io/virtualMachineControllerFinalize
-  labels:
-    app: win2k22-apricot-basilisk-61
-    vm.kubevirt.io/template: windows2k22-server-medium
-    vm.kubevirt.io/template.namespace: openshift
-    vm.kubevirt.io/template.revision: '1'
-    vm.kubevirt.io/template.version: v0.31.1
 spec:
   dataVolumeTemplates:
     - apiVersion: cdi.kubevirt.io/v1beta1
