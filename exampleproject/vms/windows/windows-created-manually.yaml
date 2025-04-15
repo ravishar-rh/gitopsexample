@@ -39,6 +39,7 @@ metadata:
       ]
   labels:
     app: win2k22-apricot-basilisk-61
+    app.kubernetes.io/instance: singpleapplication
     vm.kubevirt.io/template: windows2k22-server-medium
     vm.kubevirt.io/template.namespace: openshift
     vm.kubevirt.io/template.revision: "1"
