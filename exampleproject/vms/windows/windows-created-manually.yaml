@@ -1,43 +1,77 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
-  name: win2k22-apricot-basilisk-61
-  namespace: exampleproject
+  annotations:
+    kubemacpool.io/transaction-timestamp: "2025-04-15T17:27:48.467882918Z"
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+    vm.kubevirt.io/validations: |
+      [
+        {
+          "name": "minimal-required-memory",
+          "path": "jsonpath::.spec.domain.memory.guest",
+          "rule": "integer",
+          "message": "This VM requires more memory.",
+          "min": 536870912
+        }, {
+          "name": "windows-virtio-bus",
+          "path": "jsonpath::.spec.domain.devices.disks[*].disk.bus",
+          "valid": "jsonpath::.spec.domain.devices.disks[*].disk.bus",
+          "rule": "enum",
+          "message": "virtio disk bus type has better performance, install virtio drivers in VM and change bus type",
+          "values": ["virtio"],
+          "justWarning": true
+        }, {
+          "name": "windows-disk-bus",
+          "path": "jsonpath::.spec.domain.devices.disks[*].disk.bus",
+          "valid": "jsonpath::.spec.domain.devices.disks[*].disk.bus",
+          "rule": "enum",
+          "message": "disk bus has to be either virtio or sata or scsi",
+          "values": ["virtio", "sata", "scsi"]
+        }, {
+          "name": "windows-cd-bus",
+          "path": "jsonpath::.spec.domain.devices.disks[*].cdrom.bus",
+          "valid": "jsonpath::.spec.domain.devices.disks[*].cdrom.bus",
+          "rule": "enum",
+          "message": "cd bus has to be sata",
+          "values": ["sata"]
+        }
+      ]
   labels:
     app: win2k22-apricot-basilisk-61
     vm.kubevirt.io/template: windows2k22-server-medium
     vm.kubevirt.io/template.namespace: openshift
-    vm.kubevirt.io/template.revision: '1'
+    vm.kubevirt.io/template.revision: "1"
     vm.kubevirt.io/template.version: v0.31.1
+  name: win2k22-apricot-basilisk-61
+  namespace: exampleproject
 spec:
   dataVolumeTemplates:
-    - apiVersion: cdi.kubevirt.io/v1beta1
-      kind: DataVolume
-      metadata:
-        annotations:
-          cdi.kubevirt.io/storage.bind.immediate.requested: 'true'
-        creationTimestamp: null
-        name: win2k22-apricot-basilisk-61
-      spec:
-        source:
-          blank: {}
-        storage:
-          resources:
-            requests:
-              storage: 60Gi
-    - metadata:
-        creationTimestamp: null
-        name: win2k22-apricot-basilisk-61-installation-cdrom
-      spec:
-        source:
-          pvc:
-            name: windows22
-            namespace: exampleproject
-        storage:
-          resources:
-            requests:
-              storage: '10737418240'
-  runStrategy: manual
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      annotations:
+        cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+      creationTimestamp: null
+      name: win2k22-apricot-basilisk-61
+    spec:
+      storage:
+        resources:
+          requests:
+            storage: 60Gi
+  - metadata:
+      creationTimestamp: null
+      name: win2k22-apricot-basilisk-61-installation-cdrom
+    spec:
+      source:
+        pvc:
+          name: windows22
+          namespace: exampleproject
+      storage:
+        resources:
+          requests:
+            storage: "10737418240"
+  running: false
   template:
     metadata:
       annotations:
@@ -56,60 +90,42 @@ spec:
           timer:
             hpet:
               present: false
-            hyperv: {}
             pit:
               tickPolicy: delay
             rtc:
               tickPolicy: catchup
-          utc: {}
         cpu:
           cores: 1
           sockets: 1
           threads: 1
         devices:
           disks:
-            - bootOrder: 2
-              disk:
-                bus: sata
-              name: rootdisk
-            - bootOrder: 3
-              cdrom:
-                bus: sata
-              name: windows-drivers-disk
-            - bootOrder: 1
-              cdrom:
-                bus: sata
-              name: installation-cdrom
+          - bootOrder: 2
+            disk:
+              bus: sata
+            name: rootdisk
+          - bootOrder: 3
+            cdrom:
+              bus: sata
+            name: windows-drivers-disk
+          - bootOrder: 1
+            cdrom:
+              bus: sata
+            name: installation-cdrom
           inputs:
-            - bus: usb
-              name: tablet
-              type: tablet
+          - bus: usb
+            name: tablet
+            type: tablet
           interfaces:
-            - macAddress: '02:76:c3:00:00:1a'
-              masquerade: {}
-              model: e1000e
-              name: default
+          - macAddress: 02:76:c3:00:00:1a
+            model: e1000e
+            name: default
           tpm:
             persistent: true
         features:
-          acpi: {}
-          apic: {}
           hyperv:
-            reenlightenment: {}
-            ipi: {}
-            synic: {}
-            synictimer:
-              direct: {}
             spinlocks:
               spinlocks: 8191
-            reset: {}
-            relaxed: {}
-            vpindex: {}
-            runtime: {}
-            tlbflush: {}
-            frequencies: {}
-            vapic: {}
-          smm: {}
         firmware:
           bootloader:
             efi:
@@ -119,18 +135,16 @@ spec:
           type: pc-q35-rhel9.4.0
         memory:
           guest: 4Gi
-        resources: {}
       networks:
-        - name: default
-          pod: {}
+      - name: default
       terminationGracePeriodSeconds: 3600
       volumes:
-        - dataVolume:
-            name: win2k22-apricot-basilisk-61
-          name: rootdisk
-        - containerDisk:
-            image: 'registry.redhat.io/container-native-virtualization/virtio-win-rhel9@sha256:2e50092a246c4e39d449201ff12a8fd9c3cbeebcf100a653990f0dce6972846d'
-          name: windows-drivers-disk
-        - dataVolume:
-            name: win2k22-apricot-basilisk-61-installation-cdrom
-          name: installation-cdrom
+      - dataVolume:
+          name: win2k22-apricot-basilisk-61
+        name: rootdisk
+      - containerDisk:
+          image: registry.redhat.io/container-native-virtualization/virtio-win-rhel9@sha256:2e50092a246c4e39d449201ff12a8fd9c3cbeebcf100a653990f0dce6972846d
+        name: windows-drivers-disk
+      - dataVolume:
+          name: win2k22-apricot-basilisk-61-installation-cdrom
+        name: installation-cdrom
