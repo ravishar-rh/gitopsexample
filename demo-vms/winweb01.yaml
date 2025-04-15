@@ -1,0 +1,80 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubemacpool.io/transaction-timestamp: "2025-03-24T15:11:35.438832859Z"
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  labels:
+    app: winweb01
+    app.kubernetes.io/part-of: 3-Tier-App
+    vm.kubevirt.io/template.revision: "1"
+    vm.kubevirt.io/template.version: v0.25.0
+  name: winweb01
+  namespace: vmimported-user2
+spec:
+  dataVolumeTemplates:
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      creationTimestamp: null
+      name: winweb01
+    spec:
+      source:
+        http:
+          url: http://s3.us-east.cloud-object-storage.appdomain.cloud/roadshowocpvirt/winweb01.qcow2
+      storage:
+        resources:
+          requests:
+            storage: 90Gi
+  running: true
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      architecture: amd64
+      domain:
+        clock:
+          timer:
+            hpet:
+              present: false
+            pit:
+              tickPolicy: delay
+            rtc:
+              tickPolicy: catchup
+        cpu:
+          cores: 1
+          sockets: 2
+          threads: 1
+        devices:
+          disks:
+          - disk:
+              bus: sata
+            name: rootdisk
+          inputs:
+          - bus: usb
+            name: tablet
+            type: tablet
+          interfaces:
+          - macAddress: 02:76:c3:00:00:03
+            model: e1000e
+            name: default
+        features:
+          hyperv:
+            spinlocks:
+              spinlocks: 8191
+          smm:
+            enabled: true
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 6Gi
+      evictionStrategy: LiveMigrate
+      networks:
+      - name: default
+      terminationGracePeriodSeconds: 3600
+      volumes:
+      - dataVolume:
+          name: winweb01
+        name: rootdisk
