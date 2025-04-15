@@ -1,0 +1,72 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    app.openshift.io/connects-to: '[{"apiVersion":"kubevirt.io/v1","kind":"VirtualMachine","name":"winweb02"},{"apiVersion":"kubevirt.io/v1","kind":"VirtualMachine","name":"winweb01"}]'
+    kubemacpool.io/transaction-timestamp: "2025-03-24T15:11:23.24742376Z"
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  labels:
+    app: database
+    app.kubernetes.io/part-of: 3-Tier-App
+  name: database
+  namespace: vmimported-user2
+spec:
+  dataVolumeTemplates:
+  - apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      creationTimestamp: null
+      name: database
+    spec:
+      source:
+        http:
+          url: http://s3.us-east.cloud-object-storage.appdomain.cloud/roadshowocpvirt/database.qcow2
+      storage:
+        resources:
+          requests:
+            storage: 16Gi
+  running: true
+  template:
+    metadata:
+      annotations:
+        vm.kubevirt.io/flavor: small
+        vm.kubevirt.io/os: centos9
+        vm.kubevirt.io/workload: server
+      creationTimestamp: null
+      labels:
+        kubevirt.io/domain: database
+        kubevirt.io/size: small
+    spec:
+      architecture: amd64
+      domain:
+        cpu:
+          cores: 1
+          sockets: 1
+          threads: 1
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: rootdisk
+          interfaces:
+          - macAddress: 02:76:c3:00:00:01
+            model: virtio
+            name: default
+          networkInterfaceMultiqueue: true
+        features:
+          smm:
+            enabled: true
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 2Gi
+      evictionStrategy: LiveMigrate
+      networks:
+      - name: default
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: database
+        name: rootdisk
