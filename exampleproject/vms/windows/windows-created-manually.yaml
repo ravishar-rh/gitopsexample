@@ -1,152 +1,14 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
-  annotations:
-    kubevirt.io/latest-observed-api-version: v1
-    kubevirt.io/storage-observed-api-version: v1
-  finalizers:
-    - kubevirt.io/virtualMachineControllerFinalize
+  name: win2k22-apricot-basilisk-61
+  namespace: exampleproject
   labels:
     app: win2k22-apricot-basilisk-61
     vm.kubevirt.io/template: windows2k22-server-medium
-    vm.kubevirt.io/template.namespace: openshift    
-  name: win2k22-apricot-basilisk-61
-    - apiVersion: kubevirt.io/v1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:annotations':
-            .: {}
-            'f:vm.kubevirt.io/validations': {}
-          'f:labels':
-            .: {}
-            'f:app': {}
-            'f:vm.kubevirt.io/template': {}
-            'f:vm.kubevirt.io/template.namespace': {}
-            'f:vm.kubevirt.io/template.revision': {}
-            'f:vm.kubevirt.io/template.version': {}
-        'f:spec':
-          .: {}
-          'f:dataVolumeTemplates': {}
-          'f:running': {}
-          'f:template':
-            .: {}
-            'f:metadata':
-              .: {}
-              'f:annotations':
-                .: {}
-                'f:vm.kubevirt.io/flavor': {}
-                'f:vm.kubevirt.io/os': {}
-                'f:vm.kubevirt.io/workload': {}
-              'f:labels':
-                .: {}
-                'f:kubevirt.io/domain': {}
-                'f:kubevirt.io/size': {}
-                'f:network.kubevirt.io/headlessService': {}
-            'f:spec':
-              .: {}
-              'f:architecture': {}
-              'f:domain':
-                .: {}
-                'f:clock':
-                  .: {}
-                  'f:timer':
-                    .: {}
-                    'f:hpet':
-                      .: {}
-                      'f:present': {}
-                    'f:hyperv': {}
-                    'f:pit':
-                      .: {}
-                      'f:tickPolicy': {}
-                    'f:rtc':
-                      .: {}
-                      'f:tickPolicy': {}
-                  'f:utc': {}
-                'f:cpu':
-                  .: {}
-                  'f:cores': {}
-                  'f:sockets': {}
-                  'f:threads': {}
-                'f:devices':
-                  .: {}
-                  'f:disks': {}
-                  'f:inputs': {}
-                  'f:interfaces': {}
-                  'f:tpm':
-                    .: {}
-                    'f:persistent': {}
-                'f:features':
-                  .: {}
-                  'f:acpi': {}
-                  'f:apic': {}
-                  'f:hyperv':
-                    'f:runtime': {}
-                    'f:vpindex': {}
-                    'f:frequencies': {}
-                    'f:vapic': {}
-                    'f:reenlightenment': {}
-                    .: {}
-                    'f:tlbflush': {}
-                    'f:synic': {}
-                    'f:ipi': {}
-                    'f:spinlocks':
-                      .: {}
-                      'f:spinlocks': {}
-                    'f:synictimer':
-                      .: {}
-                      'f:direct': {}
-                    'f:relaxed': {}
-                    'f:reset': {}
-                  'f:smm': {}
-                'f:firmware':
-                  .: {}
-                  'f:bootloader':
-                    .: {}
-                    'f:efi':
-                      .: {}
-                      'f:persistent': {}
-                      'f:secureBoot': {}
-                'f:memory':
-                  .: {}
-                  'f:guest': {}
-              'f:networks': {}
-              'f:terminationGracePeriodSeconds': {}
-              'f:volumes': {}
-      manager: Mozilla
-      operation: Update
-      time: '2025-04-11T22:14:52Z'
-    - apiVersion: kubevirt.io/v1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:annotations':
-            'f:kubevirt.io/latest-observed-api-version': {}
-            'f:kubevirt.io/storage-observed-api-version': {}
-          'f:finalizers':
-            .: {}
-            'v:"kubevirt.io/virtualMachineControllerFinalize"': {}
-      manager: virt-controller
-      operation: Update
-      time: '2025-04-11T22:14:52Z'
-    - apiVersion: kubevirt.io/v1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:status':
-          'f:printableStatus': {}
-          'f:runStrategy': {}
-          'f:conditions': {}
-          .: {}
-          'f:ready': {}
-          'f:volumeSnapshotStatuses': {}
-          'f:observedGeneration': {}
-          'f:created': {}
-          'f:desiredGeneration': {}
-      manager: virt-controller
-      operation: Update
-      subresource: status
-      time: '2025-04-14T11:44:39Z'
-  namespace: exampleproject
+    vm.kubevirt.io/template.namespace: openshift
+    vm.kubevirt.io/template.revision: '1'
+    vm.kubevirt.io/template.version: v0.31.1
 spec:
   dataVolumeTemplates:
     - apiVersion: cdi.kubevirt.io/v1beta1
@@ -175,7 +37,7 @@ spec:
           resources:
             requests:
               storage: '10737418240'
-  running: true
+  runStrategy: manual
   template:
     metadata:
       annotations:
