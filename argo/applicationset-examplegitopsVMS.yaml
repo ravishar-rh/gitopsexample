@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/ravishar-rh/gitopsexample.git
       revision: HEAD
       directories:
-      - path: exampleproject/examplegitops-vms-i-migrated/*
+      - path: exampleproject/examplegitops/*
   template:
     metadata:
       name: '{{.path.basename}}'
