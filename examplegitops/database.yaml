@@ -16,7 +16,7 @@ spec:
     kind: virtualmachineclusterpreference
     name: centos.stream9
     revisionName: database-user2-centos.stream9-v1beta1-b7030d00-b940-4ce1-a49b-2c9fb53a5d44-1
-  runStrategy: running
+  runStrategy: Always
   template:
     metadata:
       creationTimestamp: null
