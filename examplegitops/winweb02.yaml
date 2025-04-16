@@ -16,7 +16,7 @@ spec:
     kind: virtualmachineclusterpreference
     name: windows.2k22
     revisionName: winweb02-user2-windows.2k22-v1beta1-f27f9f4e-8a5c-4f79-a5a3-9ce658447de5-1
-  runStrategy: Halted
+  runStrategy: Always
   template:
     metadata:
       creationTimestamp: null
