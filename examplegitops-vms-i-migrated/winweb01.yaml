@@ -1,0 +1,64 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubemacpool.io/transaction-timestamp: "2025-04-16T16:32:50.899306319Z"
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  labels:
+    migration: f24af4b0-b34e-4c67-9a1d-d2c94662010a
+    plan: edea073d-8bc5-4c6c-9904-3cfe73b0db2e
+    vmID: vm-109109
+  name: winweb01-user2
+  namespace: examplegitops
+spec:
+  preference:
+    kind: virtualmachineclusterpreference
+    name: windows.2k22
+    revisionName: winweb01-user2-windows.2k22-v1beta1-f27f9f4e-8a5c-4f79-a5a3-9ce658447de5-1
+  runStrategy: Halted
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: winweb01-user2
+    spec:
+      architecture: amd64
+      domain:
+        clock:
+          timezone: UTC
+        cpu:
+          cores: 2
+          sockets: 1
+        devices:
+          disks:
+          - bootOrder: 1
+            disk:
+              bus: virtio
+            name: vol-0
+          inputs:
+          - bus: virtio
+            name: tablet
+            type: tablet
+          interfaces:
+          - macAddress: 00:50:56:af:af:7a
+            model: virtio
+            name: net-0
+        features:
+          smm:
+            enabled: true
+        firmware:
+          bootloader:
+            efi:
+              secureBoot: true
+          serial: 422fa560-b1a8-5006-4d43-6ed39d3758d4
+        machine:
+          type: pc-q35-rhel9.4.0
+        memory:
+          guest: 6Gi
+      networks:
+      - name: net-0
+      volumes:
+      - name: vol-0
+        persistentVolumeClaim:
+          claimName: vsphere-vm-109109-t7nj8

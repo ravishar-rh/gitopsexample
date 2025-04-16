@@ -1,0 +1,64 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubemacpool.io/transaction-timestamp: "2025-04-16T16:28:35.988697171Z"
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
+  labels:
+    migration: f24af4b0-b34e-4c67-9a1d-d2c94662010a
+    plan: edea073d-8bc5-4c6c-9904-3cfe73b0db2e
+    vmID: vm-109089
+  name: database-user2
+  namespace: examplegitops
+spec:
+  preference:
+    kind: virtualmachineclusterpreference
+    name: centos.stream9
+    revisionName: database-user2-centos.stream9-v1beta1-b7030d00-b940-4ce1-a49b-2c9fb53a5d44-1
+  runStrategy: Halted
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: database-user2
+    spec:
+      architecture: amd64
+      domain:
+        clock:
+          timezone: UTC
+        cpu:
+          cores: 1
+          sockets: 1
+        devices:
+          disks:
+          - bootOrder: 1
+            disk:
+              bus: virtio
+            name: vol-0
+          inputs:
+          - bus: virtio
+            name: tablet
+            type: tablet
+          interfaces:
+          - macAddress: 00:50:56:af:ea:37
+            model: virtio
+            name: net-0
+        features:
+          smm:
+            enabled: true
+        firmware:
+          bootloader:
+            efi:
+              secureBoot: true
+          serial: 422f34de-72ed-c35b-5038-b7b10bdf171b
+        machine:
+          type: pc-q35-rhel9.4.0
+        memory:
+          guest: 2Gi
+      networks:
+      - name: net-0
+      volumes:
+      - name: vol-0
+        persistentVolumeClaim:
+          claimName: vsphere-vm-109089-86mtm
