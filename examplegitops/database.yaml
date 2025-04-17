@@ -43,8 +43,7 @@ spec:
           interfaces:
           - macAddress: 00:50:56:af:ea:37
             model: virtio
-            name: net-0
-            masquerade: {}
+            name: default
           networkInterfaceMultiqueue: true            
         features:
           smm:
@@ -59,7 +58,7 @@ spec:
         memory:
           guest: 2Gi
       networks:
-      - name: net-0
+      - name: default
       volumes:
       - name: vol-0
         persistentVolumeClaim:
