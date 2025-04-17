@@ -2,12 +2,12 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   annotations:
+    kubemacpool.io/transaction-timestamp: "2025-04-17T20:34:12.219065352Z"
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
   labels:
-    app.kubernetes.io/instance: myvms
-    migration: cc45cb65-d119-49cb-9f6b-43ff14ad656d
-    plan: 9271db70-df3c-4563-925b-c4e7bf8a9879
+    migration: a7ec8619-f8aa-4a36-ac22-3529573463d4
+    plan: 2127b6e6-ab68-4f04-8b0a-56205b097273
     vmID: vm-109089
   name: database-user2
   namespace: examplegitops
@@ -41,9 +41,9 @@ spec:
             name: tablet
             type: tablet
           interfaces:
-            - macAddress: '00:50:56:af:ea:37'
-              model: virtio
-              name: net-0
+          - macAddress: 00:50:56:af:ea:37
+            model: virtio
+            name: net-0
         features:
           smm:
             enabled: true
@@ -55,11 +55,10 @@ spec:
         machine:
           type: pc-q35-rhel9.4.0
         memory:
-          guest: 4Gi
+          guest: 2Gi
       networks:
       - name: net-0
-        pod: {}
       volumes:
       - name: vol-0
         persistentVolumeClaim:
-          claimName: database-vm-109089-d7grq
+          claimName: vmspher3-vm-109089-wphd4

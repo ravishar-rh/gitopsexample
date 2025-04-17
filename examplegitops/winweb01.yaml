@@ -2,12 +2,12 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   annotations:
+    kubemacpool.io/transaction-timestamp: "2025-04-17T20:39:51.839489089Z"
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
   labels:
-    app.kubernetes.io/instance: myvms
-    migration: f24af4b0-b34e-4c67-9a1d-d2c94662010a
-    plan: edea073d-8bc5-4c6c-9904-3cfe73b0db2e
+    migration: a7ec8619-f8aa-4a36-ac22-3529573463d4
+    plan: 2127b6e6-ab68-4f04-8b0a-56205b097273
     vmID: vm-109109
   name: winweb01-user2
   namespace: examplegitops
@@ -55,11 +55,10 @@ spec:
         machine:
           type: pc-q35-rhel9.4.0
         memory:
-          guest: 8Gi
+          guest: 6Gi
       networks:
       - name: net-0
-        pod: {}
       volumes:
       - name: vol-0
         persistentVolumeClaim:
-          claimName: vsphere-vm-109109-t7nj8
+          claimName: vmspher3-vm-109109-chxz6
