@@ -43,7 +43,7 @@ spec:
           interfaces:
           - macAddress: 00:50:56:af:ea:37
             model: virtio
-            name: net-0
+            name: default
         features:
           smm:
             enabled: true
