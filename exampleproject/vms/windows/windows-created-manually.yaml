@@ -2,7 +2,7 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   annotations:
-    kubemacpool.io/transaction-timestamp: "2025-04-15T17:27:48.467882918Z"
+    kubemacpool.io/transaction-timestamp: "2025-04-17T21:20:56.203275195Z"
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
     vm.kubevirt.io/validations: |
@@ -72,7 +72,7 @@ spec:
         resources:
           requests:
             storage: "10737418240"
-  running: false
+  running: true
   template:
     metadata:
       annotations:
