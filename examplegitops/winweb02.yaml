@@ -2,7 +2,6 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   annotations:
-    kubemacpool.io/transaction-timestamp: "2025-04-16T16:31:20.504973733Z"
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
   labels:
@@ -50,7 +49,7 @@ spec:
         firmware:
           bootloader:
             efi:
-              secureBoot: true
+              secureBoot: false
           serial: 422fa29d-d92e-1e48-1084-62a641f287ce
         machine:
           type: pc-q35-rhel9.4.0
