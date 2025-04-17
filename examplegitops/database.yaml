@@ -58,6 +58,7 @@ spec:
           guest: 2Gi
       networks:
       - name: net-0
+        type: bridge
       volumes:
       - name: vol-0
         persistentVolumeClaim:
