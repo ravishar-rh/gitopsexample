@@ -44,6 +44,8 @@ spec:
           - macAddress: 00:50:56:af:ea:37
             model: virtio
             name: net-0
+            masquerade: {}
+          networkInterfaceMultiqueue: true            
         features:
           smm:
             enabled: true
@@ -58,7 +60,6 @@ spec:
           guest: 2Gi
       networks:
       - name: net-0
-        type: bridge
       volumes:
       - name: vol-0
         persistentVolumeClaim:
