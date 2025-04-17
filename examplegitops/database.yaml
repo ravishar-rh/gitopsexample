@@ -42,7 +42,6 @@ spec:
             type: tablet
           interfaces:
             - macAddress: '00:50:56:af:ea:37'
-              masquerade: {}
               model: virtio
               name: net-0
         features:
@@ -59,6 +58,7 @@ spec:
           guest: 2Gi
       networks:
       - name: net-0
+        pod: {}
       volumes:
       - name: vol-0
         persistentVolumeClaim:
