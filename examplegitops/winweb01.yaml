@@ -5,6 +5,7 @@ metadata:
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
   labels:
+    app.kubernetes.io/instance: myvms
     migration: f24af4b0-b34e-4c67-9a1d-d2c94662010a
     plan: edea073d-8bc5-4c6c-9904-3cfe73b0db2e
     vmID: vm-109109
