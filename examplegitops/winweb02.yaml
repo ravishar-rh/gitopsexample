@@ -50,12 +50,12 @@ spec:
         firmware:
           bootloader:
             efi:
-              secureBoot: false
+              secureBoot: true
           serial: 422fa29d-d92e-1e48-1084-62a641f287ce
         machine:
           type: pc-q35-rhel9.4.0
         memory:
-          guest: 6Gi
+          guest: 8Gi
       networks:
       - name: net-0
         pod: {}

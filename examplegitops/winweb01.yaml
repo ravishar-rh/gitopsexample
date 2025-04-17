@@ -50,7 +50,7 @@ spec:
         firmware:
           bootloader:
             efi:
-              secureBoot: false
+              secureBoot: true
           serial: 422fa560-b1a8-5006-4d43-6ed39d3758d4
         machine:
           type: pc-q35-rhel9.4.0
