@@ -41,9 +41,10 @@ spec:
             name: tablet
             type: tablet
           interfaces:
-          - macAddress: 00:50:56:af:ea:37
-            model: virtio
-            name: net-0
+            - macAddress: '00:50:56:af:ea:37'
+              masquerade: {}
+              model: virtio
+              name: net-0
         features:
           smm:
             enabled: true
