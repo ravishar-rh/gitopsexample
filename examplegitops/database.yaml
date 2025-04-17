@@ -40,10 +40,7 @@ spec:
           - bus: virtio
             name: tablet
             type: tablet
-          interfaces:
-          - macAddress: 00:50:56:af:ea:37
-            model: virtio
-            name: default
+          interfaces: {}
         features:
           smm:
             enabled: true
@@ -55,9 +52,7 @@ spec:
           type: pc-q35-rhel9.4.0
         memory:
           guest: 2Gi
-      networks:
-      - name: default
-        pod: {}
+      networks: {}
       volumes:
       - name: vol-0
         persistentVolumeClaim:
