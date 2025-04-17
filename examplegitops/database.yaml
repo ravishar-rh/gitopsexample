@@ -2,12 +2,12 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   annotations:
-    kubemacpool.io/transaction-timestamp: "2025-04-16T16:28:35.988697171Z"
+    kubemacpool.io/transaction-timestamp: "2025-04-17T15:18:04.969346185Z"
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
   labels:
-    migration: f24af4b0-b34e-4c67-9a1d-d2c94662010a
-    plan: edea073d-8bc5-4c6c-9904-3cfe73b0db2e
+    migration: cc45cb65-d119-49cb-9f6b-43ff14ad656d
+    plan: 9271db70-df3c-4563-925b-c4e7bf8a9879
     vmID: vm-109089
   name: database-user2
   namespace: examplegitops
@@ -43,8 +43,7 @@ spec:
           interfaces:
           - macAddress: 00:50:56:af:ea:37
             model: virtio
-            name: default
-          networkInterfaceMultiqueue: true            
+            name: net-0
         features:
           smm:
             enabled: true
@@ -58,8 +57,8 @@ spec:
         memory:
           guest: 2Gi
       networks:
-      - name: default
+      - name: net-0
       volumes:
       - name: vol-0
         persistentVolumeClaim:
-          claimName: vsphere-vm-109089-86mtm
+          claimName: database-vm-109089-d7grq
