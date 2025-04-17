@@ -56,7 +56,8 @@ spec:
         memory:
           guest: 2Gi
       networks:
-      - name: net-0
+      - name: default
+        pod: {}
       volumes:
       - name: vol-0
         persistentVolumeClaim:
