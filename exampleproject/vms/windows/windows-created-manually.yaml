@@ -138,6 +138,7 @@ spec:
           guest: 4Gi
       networks:
       - name: default
+        pod: {}
       terminationGracePeriodSeconds: 3600
       volumes:
       - dataVolume:
