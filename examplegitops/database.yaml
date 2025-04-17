@@ -55,7 +55,7 @@ spec:
         machine:
           type: pc-q35-rhel9.4.0
         memory:
-          guest: 2Gi
+          guest: 4Gi
       networks:
       - name: net-0
         pod: {}
