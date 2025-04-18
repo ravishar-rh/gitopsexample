@@ -42,6 +42,7 @@ spec:
             type: tablet
           interfaces:
           - macAddress: 00:50:56:af:af:7a
+            masquerade: {}          
             model: virtio
             name: net-0
         features:

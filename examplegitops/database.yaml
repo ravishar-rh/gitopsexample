@@ -44,6 +44,7 @@ spec:
             type: tablet
           interfaces:
           - macAddress: 00:50:56:af:ea:37
+            masquerade: {}
             model: virtio
             name: default
         features:
