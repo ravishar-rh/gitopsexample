@@ -28,18 +28,6 @@ spec:
           resources:
             requests:
               storage: 60Gi
-    - metadata:
-        creationTimestamp: null
-        name: win2k22-apricot-basilisk-61-installation-cdrom
-      spec:
-        source:
-          pvc:
-            name: windows22
-            namespace: exampleproject
-        storage:
-          resources:
-            requests:
-              storage: '10737418240'
   runStrategy: RerunOnFailure
   template:
     metadata:
