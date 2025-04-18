@@ -28,7 +28,19 @@ spec:
           resources:
             requests:
               storage: 60Gi
-  runStrategy: RerunOnFailure
+    - metadata:
+        creationTimestamp: null
+        name: win2k22-apricot-basilisk-61-installation-cdrom
+      spec:
+        source:
+          pvc:
+            name: windows22
+            namespace: exampleproject
+        storage:
+          resources:
+            requests:
+              storage: '10737418240'
+  running: true
   template:
     metadata:
       annotations:
@@ -110,6 +122,7 @@ spec:
           type: pc-q35-rhel9.4.0
         memory:
           guest: 4Gi
+        resources: {}
       networks:
         - name: default
           pod: {}
@@ -121,3 +134,6 @@ spec:
         - containerDisk:
             image: 'registry.redhat.io/container-native-virtualization/virtio-win-rhel9@sha256:2e50092a246c4e39d449201ff12a8fd9c3cbeebcf100a653990f0dce6972846d'
           name: windows-drivers-disk
+        - dataVolume:
+            name: win2k22-apricot-basilisk-61-installation-cdrom
+          name: installation-cdrom
