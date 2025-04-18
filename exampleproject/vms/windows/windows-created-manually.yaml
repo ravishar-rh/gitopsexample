@@ -40,7 +40,7 @@ spec:
           resources:
             requests:
               storage: '10737418240'
-  running: true
+  runStrategy: RerunOnFailure
   template:
     metadata:
       annotations:
