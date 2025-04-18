@@ -2,100 +2,7 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   name: database-user2
-    - apiVersion: kubevirt.io/v1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:labels':
-            .: {}
-            'f:migration': {}
-            'f:plan': {}
-            'f:vmID': {}
-        'f:spec':
-          .: {}
-          'f:preference':
-            .: {}
-            'f:kind': {}
-            'f:name': {}
-          'f:runStrategy': {}
-          'f:template':
-            .: {}
-            'f:metadata':
-              .: {}
-              'f:creationTimestamp': {}
-              'f:labels':
-                .: {}
-                'f:app': {}
-            'f:spec':
-              .: {}
-              'f:domain':
-                .: {}
-                'f:clock':
-                  .: {}
-                  'f:timezone': {}
-                'f:cpu':
-                  .: {}
-                  'f:cores': {}
-                  'f:sockets': {}
-                'f:devices':
-                  .: {}
-                  'f:disks': {}
-                  'f:inputs': {}
-                  'f:interfaces': {}
-                'f:features':
-                  .: {}
-                  'f:acpi': {}
-                  'f:smm':
-                    .: {}
-                    'f:enabled': {}
-                'f:firmware':
-                  .: {}
-                  'f:bootloader':
-                    .: {}
-                    'f:efi':
-                      .: {}
-                      'f:secureBoot': {}
-                  'f:serial': {}
-                'f:memory':
-                  .: {}
-                  'f:guest': {}
-                'f:resources': {}
-              'f:networks': {}
-              'f:volumes': {}
-      manager: forklift-controller
-      operation: Update
-      time: '2025-04-18T14:56:42Z'
-    - apiVersion: kubevirt.io/v1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:annotations':
-            'f:kubevirt.io/latest-observed-api-version': {}
-            'f:kubevirt.io/storage-observed-api-version': {}
-          'f:finalizers':
-            .: {}
-            'v:"kubevirt.io/virtualMachineControllerFinalize"': {}
-        'f:spec':
-          'f:preference':
-            'f:revisionName': {}
-      manager: virt-controller
-      operation: Update
-      time: '2025-04-18T14:56:42Z'
-    - apiVersion: kubevirt.io/v1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:status':
-          .: {}
-          'f:conditions': {}
-          'f:printableStatus': {}
-          'f:volumeSnapshotStatuses': {}
-      manager: virt-controller
-      operation: Update
-      subresource: status
-      time: '2025-04-18T14:56:42Z'
   namespace: examplegitops
-  finalizers:
-    - kubevirt.io/virtualMachineControllerFinalize
   labels:
     migration: d1ea1443-a5df-448d-82de-ca5a840b23dc
     plan: 6c46f7c7-6082-4b3e-bf67-ad897afd50e5
@@ -104,7 +11,6 @@ spec:
   preference:
     kind: virtualmachineclusterpreference
     name: centos.stream9
-    revisionName: database-user2-centos.stream9-v1beta1-b7030d00-b940-4ce1-a49b-2c9fb53a5d44-1
   runStrategy: RerunOnFailure
   template:
     metadata:
