@@ -1,6 +1,9 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
+  annotations:
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1
   name: database-user2
   namespace: examplegitops
   labels:
