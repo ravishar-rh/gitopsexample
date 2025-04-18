@@ -133,6 +133,3 @@ spec:
         - containerDisk:
             image: 'registry.redhat.io/container-native-virtualization/virtio-win-rhel9@sha256:2e50092a246c4e39d449201ff12a8fd9c3cbeebcf100a653990f0dce6972846d'
           name: windows-drivers-disk
-        - dataVolume:
-            name: win2k22-apricot-basilisk-61-installation-cdrom
-          name: installation-cdrom
