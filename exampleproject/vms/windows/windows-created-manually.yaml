@@ -7,7 +7,6 @@ metadata:
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
     resourceVersion: '2'
-  resourceVersion: '21458376'
   name: win2k22-apricot-basilisk-61
   namespace: exampleproject
   labels:
