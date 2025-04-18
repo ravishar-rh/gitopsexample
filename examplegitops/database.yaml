@@ -49,8 +49,7 @@ spec:
             enabled: true
         firmware:
           bootloader:
-            efi:
-              secureBoot: true
+            bios: {}
           serial: 422f34de-72ed-c35b-5038-b7b10bdf171b
         machine:
           type: pc-q35-rhel9.4.0
