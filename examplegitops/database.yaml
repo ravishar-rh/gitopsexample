@@ -1,23 +1,111 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
-  annotations:
-    kubemacpool.io/transaction-timestamp: "2025-04-17T21:03:36.980361005Z"
-    kubevirt.io/latest-observed-api-version: v1
-    kubevirt.io/storage-observed-api-version: v1
-  labels:
-    app.kubernetes.io/instance: myvms
-    migration: a7ec8619-f8aa-4a36-ac22-3529573463d4
-    plan: 2127b6e6-ab68-4f04-8b0a-56205b097273
-    vmID: vm-109089
   name: database-user2
+    - apiVersion: kubevirt.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:migration': {}
+            'f:plan': {}
+            'f:vmID': {}
+        'f:spec':
+          .: {}
+          'f:preference':
+            .: {}
+            'f:kind': {}
+            'f:name': {}
+          'f:runStrategy': {}
+          'f:template':
+            .: {}
+            'f:metadata':
+              .: {}
+              'f:creationTimestamp': {}
+              'f:labels':
+                .: {}
+                'f:app': {}
+            'f:spec':
+              .: {}
+              'f:domain':
+                .: {}
+                'f:clock':
+                  .: {}
+                  'f:timezone': {}
+                'f:cpu':
+                  .: {}
+                  'f:cores': {}
+                  'f:sockets': {}
+                'f:devices':
+                  .: {}
+                  'f:disks': {}
+                  'f:inputs': {}
+                  'f:interfaces': {}
+                'f:features':
+                  .: {}
+                  'f:acpi': {}
+                  'f:smm':
+                    .: {}
+                    'f:enabled': {}
+                'f:firmware':
+                  .: {}
+                  'f:bootloader':
+                    .: {}
+                    'f:efi':
+                      .: {}
+                      'f:secureBoot': {}
+                  'f:serial': {}
+                'f:memory':
+                  .: {}
+                  'f:guest': {}
+                'f:resources': {}
+              'f:networks': {}
+              'f:volumes': {}
+      manager: forklift-controller
+      operation: Update
+      time: '2025-04-18T14:56:42Z'
+    - apiVersion: kubevirt.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:kubevirt.io/latest-observed-api-version': {}
+            'f:kubevirt.io/storage-observed-api-version': {}
+          'f:finalizers':
+            .: {}
+            'v:"kubevirt.io/virtualMachineControllerFinalize"': {}
+        'f:spec':
+          'f:preference':
+            'f:revisionName': {}
+      manager: virt-controller
+      operation: Update
+      time: '2025-04-18T14:56:42Z'
+    - apiVersion: kubevirt.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          .: {}
+          'f:conditions': {}
+          'f:printableStatus': {}
+          'f:volumeSnapshotStatuses': {}
+      manager: virt-controller
+      operation: Update
+      subresource: status
+      time: '2025-04-18T14:56:42Z'
   namespace: examplegitops
+  finalizers:
+    - kubevirt.io/virtualMachineControllerFinalize
+  labels:
+    migration: d1ea1443-a5df-448d-82de-ca5a840b23dc
+    plan: 6c46f7c7-6082-4b3e-bf67-ad897afd50e5
+    vmID: vm-109089
 spec:
   preference:
     kind: virtualmachineclusterpreference
     name: centos.stream9
     revisionName: database-user2-centos.stream9-v1beta1-b7030d00-b940-4ce1-a49b-2c9fb53a5d44-1
-  runStrategy: Always
+  runStrategy: RerunOnFailure
   template:
     metadata:
       creationTimestamp: null
@@ -32,34 +120,38 @@ spec:
           cores: 1
           sockets: 1
         devices:
-          autoattachPodInterface: false
           disks:
-          - bootOrder: 1
-            disk:
-              bus: virtio
-            name: vol-0
+            - bootOrder: 1
+              disk:
+                bus: virtio
+              name: vol-0
           inputs:
-          - bus: virtio
-            name: tablet
-            type: tablet
+            - bus: virtio
+              name: tablet
+              type: tablet
           interfaces:
-          - macAddress: 00:50:56:af:ea:37
-            masquerade: {}
-            model: virtio
-            name: default
+            - macAddress: '00:50:56:af:ea:37'
+              masquerade: {}
+              model: virtio
+              name: net-0
         features:
+          acpi: {}
           smm:
             enabled: true
         firmware:
+          bootloader:
+            efi:
+              secureBoot: true
           serial: 422f34de-72ed-c35b-5038-b7b10bdf171b
         machine:
           type: pc-q35-rhel9.4.0
         memory:
-          guest: 4Gi
+          guest: 2Gi
+        resources: {}
       networks:
-      - name: default
-        pod: {}
+        - name: net-0
+          pod: {}
       volumes:
-      - name: vol-0
-        persistentVolumeClaim:
-          claimName: vmspher3-vm-109089-wphd4
+        - name: vol-0
+          persistentVolumeClaim:
+            claimName: copy-of-database-vm-109089-8l7gs
