@@ -2,9 +2,6 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"kubevirt.io/v1","kind":"VirtualMachine","metadata":{"annotations":{"kubevirt.io/latest-observed-api-version":"v1","resourceVersion":"2"},"labels":{"app":"win2k22-apricot-basilisk-61","app.kubernetes.io/instance":"singpleapplication","vm.kubevirt.io/template":"windows2k22-server-medium","vm.kubevirt.io/template.namespace":"openshift","vm.kubevirt.io/template.revision":"1","vm.kubevirt.io/template.version":"v0.31.1"},"name":"win2k22-apricot-basilisk-61","namespace":"exampleproject"},"spec":{"dataVolumeTemplates":[{"apiVersion":"cdi.kubevirt.io/v1beta1","kind":"DataVolume","metadata":{"annotations":{"cdi.kubevirt.io/storage.bind.immediate.requested":"true"},"creationTimestamp":null,"name":"win2k22-apricot-basilisk-61"},"spec":{"source":{"blank":{}},"storage":{"resources":{"requests":{"storage":"60Gi"}}}}},{"metadata":{"creationTimestamp":null,"name":"win2k22-apricot-basilisk-61-installation-cdrom"},"spec":{"source":{"pvc":{"name":"windows22","namespace":"exampleproject"}},"storage":{"resources":{"requests":{"storage":"10737418240"}}}}}],"running":true,"template":{"metadata":{"annotations":{"vm.kubevirt.io/flavor":"medium","vm.kubevirt.io/os":"windows2k22","vm.kubevirt.io/workload":"server"},"creationTimestamp":null,"labels":{"kubevirt.io/domain":"win2k22-apricot-basilisk-61","kubevirt.io/size":"medium","network.kubevirt.io/headlessService":"headless"}},"spec":{"architecture":"amd64","domain":{"clock":{"timer":{"hpet":{"present":false},"hyperv":{},"pit":{"tickPolicy":"delay"},"rtc":{"tickPolicy":"catchup"}},"utc":{}},"cpu":{"cores":1,"sockets":1,"threads":1},"devices":{"disks":[{"bootOrder":2,"disk":{"bus":"sata"},"name":"rootdisk"},{"bootOrder":3,"cdrom":{"bus":"sata"},"name":"windows-drivers-disk"},{"bootOrder":1,"cdrom":{"bus":"sata"},"name":"installation-cdrom"}],"inputs":[{"bus":"usb","name":"tablet","type":"tablet"}],"interfaces":[{"macAddress":"02:76:c3:00:00:1a","masquerade":{},"model":"e1000e","name":"default"}],"tpm":{"persistent":true}},"features":{"acpi":{},"apic":{},"hyperv":{"frequencies":{},"ipi":{},"reenlightenment":{},"relaxed":{},"reset":{},"runtime":{},"spinlocks":{"spinlocks":8191},"synic":{},"synictimer":{"direct":{}},"tlbflush":{},"vapic":{},"vpindex":{}},"smm":{}},"firmware":{"bootloader":{"efi":{"persistent":true,"secureBoot":true}}},"machine":{"type":"pc-q35-rhel9.4.0"},"memory":{"guest":"4Gi"},"resources":{}},"networks":[{"name":"default","pod":{}}],"terminationGracePeriodSeconds":3600,"volumes":[{"dataVolume":{"name":"win2k22-apricot-basilisk-61"},"name":"rootdisk"},{"containerDisk":{"image":"registry.redhat.io/container-native-virtualization/virtio-win-rhel9@sha256:2e50092a246c4e39d449201ff12a8fd9c3cbeebcf100a653990f0dce6972846d"},"name":"windows-drivers-disk"},{"dataVolume":{"name":"win2k22-apricot-basilisk-61-installation-cdrom"},"name":"installation-cdrom"}]}}}}
-    kubemacpool.io/transaction-timestamp: '2025-04-21T14:20:43.764457196Z'
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
     resourceVersion: '2'
@@ -35,7 +32,7 @@ spec:
           resources:
             requests:
               storage: 60Gi
-  runStrategy: Always
+  runStrategy: Halted
   template:
     metadata:
       annotations:
