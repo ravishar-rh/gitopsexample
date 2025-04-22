@@ -14,7 +14,7 @@ spec:
   preference:
     kind: virtualmachineclusterpreference
     name: windows.2k22
-  runStrategy: RerunOnFailure
+  runStrategy: Always
   template:
     metadata:
       creationTimestamp: null
