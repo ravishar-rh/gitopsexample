@@ -35,7 +35,7 @@ spec:
           resources:
             requests:
               storage: 60Gi
-  runStrategy: Always
+  runStrategy: Paused
   template:
     metadata:
       annotations:
