@@ -5,8 +5,6 @@ metadata:
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
     resourceVersion: '2'
-    restore.kubevirt.io/lastRestoreUID: tmp-restore-adb8f7e1-bf4f-4d2f-a0e2-bbae9b34b705-92d33831-e96a-48b1-89e9-daf9428a3d0b
-  resourceVersion: '21691051'
   name: win2k22-clone
   namespace: exampleproject
   labels:
@@ -23,7 +21,6 @@ spec:
       metadata:
         annotations:
           cdi.kubevirt.io/storage.bind.immediate.requested: 'true'
-        creationTimestamp: null
         name: restore-92d33831-e96a-48b1-89e9-daf9428a3d0b-rootdisk
       spec:
         source:
