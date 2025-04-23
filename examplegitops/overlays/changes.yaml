@@ -1,0 +1,9 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: winweb02-user2
+spec:
+  guest:
+    memory:
+      request: "8Gi"  # Example: Request 8GB of memory
+      limit: "8Gi"    # Example: Limit 8GB of memory
