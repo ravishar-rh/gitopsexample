@@ -2,6 +2,16 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   name: winweb02-user2
+  namespace: examplegitops
 spec:
-  memory:
-    guest: 8Gi
+  preference:
+    kind: virtualmachineclusterpreference
+    name: windows.2k22
+  runStrategy: RerunOnFailure
+    spec:
+      architecture: amd64
+      domain:
+        clock:
+          timezone: PDT
+        memory:
+          guest: 8Gi
