@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - ../winweb02.yaml
 patches:
-  - path: changes.yaml
+  - path: ./changes.yaml
 
