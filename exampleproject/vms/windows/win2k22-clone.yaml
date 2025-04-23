@@ -4,7 +4,6 @@ metadata:
   annotations:
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1
-    resourceVersion: '2'
   name: win2k22-clone
   namespace: exampleproject
   labels:
