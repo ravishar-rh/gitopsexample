@@ -8,5 +8,5 @@ patches:
       name: winweb02-user2
     patch: |-
       - op: replace
-        path: /spec/domain/memomry
+        path: /spec/domain/memomry/guest
         value: 8Gi
