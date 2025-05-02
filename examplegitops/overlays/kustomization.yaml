@@ -3,14 +3,11 @@ kind: Kustomization
 resources:
   - ../base
 patches:
-<<<<<<< HEAD
-  - path: changes.yaml
-=======
   - target:
       kind: VirtualMachine
       name: winweb02-user2
     patch: |-
       - op: replace
-        path: spec/template/spec/domain/memory/guest
+        path: /spec/template/spec/domain/memory/guest
         value: 8Gi
->>>>>>> 9b99088 (change path)
+
