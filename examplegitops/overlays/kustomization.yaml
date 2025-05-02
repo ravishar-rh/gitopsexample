@@ -8,5 +8,5 @@ patches:
       name: winweb02-user2
     patch: |-
       - op: replace
-        path: /./.memory/guest
+        path: ./memory/guest
         value: 8Gi
