@@ -4,9 +4,9 @@ resources:
   - ../base
 patches:
   - target:
-      kind: virtualmachineclusterpreference
-      name: windows.2k22
+      kind: VirtualMachine
+      name: winweb02-user2
     patch: |-
       - op: replace
-        path: /spec/template/spec/domain/memory/guest
+        path: spec/template/spec/domain/memory/guest
         value: 8Gi
