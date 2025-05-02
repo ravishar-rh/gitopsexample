@@ -3,5 +3,10 @@ kind: Kustomization
 resources:
   - ../base
 patches:
-  - path: ./changes.yaml
-
+  - target:
+      kind: VirtualMachine
+      name: winweb02-user2
+    patch: |-
+      - op: replace
+        path: /spec/domain/memomry
+        value: 8Gi
