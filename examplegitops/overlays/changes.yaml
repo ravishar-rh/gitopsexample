@@ -4,9 +4,10 @@ metadata:
   name: winweb02-user2
   namespace: examplegitops
 spec:
-  runStrategy: RerunOnFailure
+  template:
     spec:
       domain:
+        runStrategy: RerunOnFailure
         clock:
           timezone: PDT
         memory:
